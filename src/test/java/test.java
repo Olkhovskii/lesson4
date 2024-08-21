@@ -2,7 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
+
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,17 +16,18 @@ public class test {
         Configuration.browser = "chrome";
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+
     }
 
     private static void executeJavaScript(String s) {
     }
 
     @Test
-    void searchJUnit5() {
+    void searchJUnit5Test() {
 
         open("/selenide/selenide");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#wiki-tab").click();
         $(".markdown-body").find(byText("Soft assertions")).shouldHave(text("Soft assertions")).click();
         $("#wiki-body").shouldHave(text("""
@@ -45,3 +46,9 @@ public class test {
 
     }
 }
+
+
+
+
+
+
